@@ -1,44 +1,46 @@
 #include <stdio.h>
-int combinationNumbers(int up, int down);
+#include <math.h>
+double combinationNumbers(int up, int down);
 int isPrime(int n);
 int main()
 {
 	int up, down, n;
-	printf("¼ÆËã×éºÏÊı£º");
+	printf("è®¡ç®—ç»„åˆæ•°ï¼š");
 	scanf("%d%d", &up, &down);
-	printf("%d\n", combinationNumbers(up, down));
-	printf("ÅĞ¶ÏËØÊı£º");
+	printf("%.0lf\n", combinationNumbers(up, down));
+	printf("åˆ¤æ–­ç´ æ•°ï¼š");
 	scanf("%d", &n);
 	if (isPrime(n))
-		printf("ÊÇËØÊı\n");
+		printf("æ˜¯ç´ æ•°\n");
 	else
-		printf("²»ÊÇËØÊı\n");
+		printf("ä¸æ˜¯ç´ æ•°\n");
 	return 0;
 }
-int combinationNumbers(int up, int down)
+double combinationNumbers(int up, int down)
 {
-	int a, result1 = 1, result2 = 1;
-	for (a = 0; a < up; a++)
+	int a;
+	double result = 1;
+	if (up == 0)
+		result = 1;
+	else
 	{
-		result1 *= (down - a);
+		for (a = 0; a < up; a++)
+		{
+			result *= ((double)down - a) / (up - a);
+		}
 	}
-	for (a = up; a >= 1; a--)
-	{
-		result2 *= a;
-	}
-	result1 /= result2;
-	return result1;
+	return result;
 }
 int isPrime(int n)
 {
-	int a, count=0;
-	for (a = n; a >= 1; a--)
+	int a;
+	for (a=(int)sqrt(n);a>=2;a--)
 	{
-		if (n%a == 0)
-			count++;
+		if (n % a == 0)
+			break;
 	}
-	if (count == 2)
-		return 1;
-	else
+	if (a >= 2)
 		return 0;
+	else
+		return 1;
 }
