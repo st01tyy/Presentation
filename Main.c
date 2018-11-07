@@ -4,15 +4,15 @@ int isPrime(int n);
 int main()
 {
 	int up, down, n;
-	printf("¼ÆËã×éºÏÊı£º");
+	printf("è®¡ç®—ç»„åˆæ•°ï¼š");
 	scanf("%d%d", &up, &down);
 	printf("%d\n", combinationNumbers(up, down));
-	printf("ÅĞ¶ÏËØÊı£º");
+	printf("åˆ¤æ–­ç´ æ•°ï¼š");
 	scanf("%d", &n);
 	if (isPrime(n))
-		printf("ÊÇËØÊı\n");
+		printf("æ˜¯ç´ æ•°\n");
 	else
-		printf("²»ÊÇËØÊı\n");
+		printf("ä¸æ˜¯ç´ æ•°\n");
 	return 0;
 }
 int combinationNumbers(int up, int down)
@@ -26,8 +26,7 @@ int combinationNumbers(int up, int down)
 	{
 		result2 *= a;
 	}
-	result1 /= result2;
-	return result1;
+	
 }
 int isPrime(int n)
 {
